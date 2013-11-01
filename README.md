@@ -1,4 +1,4 @@
 Muistilista_TsoHa2013
 =====================
 
-Muistilistan URL: krha.users.cs.helsinki.fi/aloitus.html
+Muistilistan URL: http://krha.users.cs.helsinki.fi/aloitus.html
