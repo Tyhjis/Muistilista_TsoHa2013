@@ -1,0 +1,55 @@
+Nykyihmisillä on niin paljon erilaisia asioita muistettavana. Kuitenkin moniin asioihin keksitty apukeinoja, kuten mm. numeromuistio. Päivän askareihin ei ole kuitenkaan kehitetty laajalti käytössä olevaa
+ratkaisua. Ossi Opiskelija tarvitsisi itselleen Ossin muistilistan, johon hän voisi listata askareitaan muistiin. Hän haluaisi tapahtumien olevan listassa, joka olisi loogisessa järjestyksessä askareen
+tärkeyden kanssa. Hänen tulisi pystyä laittamaan erilaisia tärkeysasteita askareille ja luokitella askareita eri ryhmiin.
+
+Hövelinä kaverina Ossi tarjoaa palvelunsa myös kavereidensa käyttöön jolloin kullakin kaverilla on oma käyttäjätunnus ja salasana, joihin liittyvät omat tärkeysasteensa ja luokkansa.
+
+Luokat voivat sisältää aliluokkia tai yhdellä askareella voi olla monta luokkaa. Jommankumman ominaisuuden toteuttaminen tekee arvasanamaksimiksi vitosen, muuten työ on nelonen.
+
+
+Substantiivit:
+
+askare
+    luokittelu
+    tärkeysaste
+    
+muistilista
+    lista
+
+Tietokantataulut:
+
+Kayttajat [ID : etunimi : sukunimi : kayttajatunnus : salasana : yllapitajastatus]
+
+Luokat (tagit) [ID : nimi]
+
+Muistilista [ID : ref( Kayttaja_ID ) : ref( Askare_ID )]
+
+Askareet [ID : Otsikko(text) : Kuvaus(text)]
+
+Tagilista [ID : ref( Askare_ID ) : ref( Tag_ID )]
+
+Käyttäjä
+================================================================================================================================
+|attribuutti |Arvojoukko          |Kuvailu                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------|
+|etunimi     |Merkkijono (max 30) |käyttäjän oikea etunimi                                                                     |
+|sukunimi    |Merkkijono (max 30) |käyttäjän oikea sukunimi                                                                    |
+|tunnus      |Merkkijono (max 30) |käyttäjän valitsema käyttäjätunnus (käytetään sisäänkirjautuessa)                           |
+|salasana    |Merkkijono (max 30) |käyttäjän valitsema salasana (tunnuksen kanssa sisäänkirjautuessa. Salattu?)                |
+|yllapit?    |kokonaisluku (0/1)  |merkitään 1 jos käyttäjä on ylläpitäjä. Ylläpitäjällä mahdollisuus muokata muita käyttäjiä. |
+===============================================================================================================================|
+
+Askare
+=============================================================================================================
+|attribuutti |Arvojoukko          |Kuvailu                                                                  |
+|-----------------------------------------------------------------------------------------------------------|
+|Otsikko     |Merkkijono (Max 50) |Käyttäjän määrittelemä otsikko askareelle. Alustava kuvaus.              |
+|Kuvaus      |Merkkijono (Max 150)|Käyttäjän määrittelemä tarkempi kuvaus askareelle. Ei välttämätön        |
+=============================================================================================================
+
+Tagit
+========================================================================================================
+|Attribuutti |Arvojoukko          |Kuvailu                                                             |
+|-------------------------------------------------------------------------------------------------------
+|Nimi        |Merkkijono (max 20) |Tagin nimi. Käyttäjän määrittelemä. Esim "luento" tai "ruokailu"    |
+========================================================================================================
