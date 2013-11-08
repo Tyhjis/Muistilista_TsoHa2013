@@ -54,4 +54,8 @@ Tagit
 |Nimi        |Merkkijono (max 20) |Tagin nimi. Käyttäjän määrittelemä. Esim "luento" tai "bileet"      |
 ========================================================================================================
 
-Näiden taulukoiden lisäksi on vielä viitetaulukot.
+Näiden taulukoiden lisäksi on vielä viitetaulukot:
+
+Muistilista
+|attribuutti | arvojoukko
+|ID	     |

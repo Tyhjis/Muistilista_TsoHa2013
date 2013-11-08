@@ -1,0 +1,22 @@
+CREATE TABLE kayttaja
+(
+ID serial primary key,
+etunimi varchar(30),
+sukunimi varchar(30),
+s-posti varchar(50),
+salasana varchar(25),
+yllapitaja boolean
+);
+
+CREATE TABLE askare
+(
+ID serial primary key,
+otsikko varchar(50),
+kuvaus varchar(200)
+);
+
+CREATE TABLE tagi
+(
+ID serial primary key,
+nimi varchar(20)
+);
