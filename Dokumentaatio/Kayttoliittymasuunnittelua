@@ -57,5 +57,17 @@ Tagit
 Näiden taulukoiden lisäksi on vielä viitetaulukot:
 
 Muistilista
-|attribuutti | arvojoukko
-|ID	     |
+==================================================
+|attribuutti | arvojoukko   |Kuvailu             |
+|------------------------------------------------|
+|KayttajaID  | integer(ref) |Viite käyttäjään.   |
+|AskareID    | integer(ref) |Viite askareeseen.  |
+==================================================
+
+Tagilista
+==================================================
+|attribuutti | arvojoukko   |Kuvailu             |
+|------------------------------------------------|
+|TagiID      | integer(ref) |Viite tagiin.       |
+|AskareID    | integer(ref) |Viite askareeseen.  |
+==================================================

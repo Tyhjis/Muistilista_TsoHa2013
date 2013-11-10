@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap-theme.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		<title>Muokkaa askaretta</title>
+		<meta http-equiv="Content-type" content="text-html; charset=UTF-8">
+	</head>
+	<body>
+		<h1>Askareen muokkaus</h1>
+			<div class="form-group">
+				<h2>Muokkaa askaretta (Sama näkymä kuin lisäyssivulla. Valmiissa versiossa tekstikenttiin lisätään askareen sisällöt.)</h2>
+				<form action = "etusivu.php" method = "get">
+					<fieldset>
+						<div class="clearfix">
+							<input type = "text" placeholder="Lisää askareen otsikko (pakollinen).">
+						</div>
+						<div class = "clearfix">
+							<textarea>Muokkaa askareen kuvausta. (Ei vaadita)</textarea>
+						</div>
+						<div class = "clearfix">
+							Päivämäärä ja aika:<br>
+							<input type = "datetime-local">
+						</div>
+						<button class = "btn-primary" type="submit" formaction = "etusivu.php">Muokkaa</button><br>
+					</fieldset>
+				</form>
+			</div>
+	</body>
+</html>

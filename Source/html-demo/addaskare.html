@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap-theme.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		<title>Lisää askare</title>
+		<meta http-equiv="Content-type" content="text-html; charset=UTF-8">
+	</head>
+	<body>
+		<h1>Askareen lisäys</h1>
+			<div class="form-group">
+				<h2>Lisää askare</h2>
+				<form action = "etusivu.php" method = "get">
+					<fieldset>
+						<div class="clearfix">
+							<input type = "text" placeholder="Lisää askareen otsikko (pakollinen).">
+						</div>
+						<div class = "clearfix">
+							<textarea>Lisää askareen kuvaus. (Ei vaadita)</textarea>
+						</div>
+						<div class = "clearfix">
+							Päivämäärä ja aika:<br>
+							<input type = "datetime-local">
+						</div>
+						<button class = "btn-primary" type="submit" formaction = "etusivu.php">Lisää askare</button><br>
+					</fieldset>
+				</form>
+			</div>
+	</body>
+</html>
