@@ -2,6 +2,7 @@ Muistilista_TsoHa2013
 =====================
 
 Muistilistan URL: http://krha.users.cs.helsinki.fi/source/html-demo/kirjaudu.html
+Testaussivun URL: http://krha.users.cs.helsinki.fi/connectiontest.php
 
 Sivuston kartta:
 
