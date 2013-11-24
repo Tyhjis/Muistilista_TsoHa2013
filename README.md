@@ -9,3 +9,5 @@ Rekisteröinti onnistuu.
 Tagien lisäämistä ei ole vielä toteutettu. 
 
 Etusivulla on listanäkymä. Listaa kaikki kirjautuneen käyttäjän askareet sekä sisältää linkit askareen muokkaukseen ja poistoon.
+
+Hakemisto Sourse/muistilista sisältää samat tiedostot kuin users-palvelimella.
