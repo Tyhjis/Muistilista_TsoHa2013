@@ -7,10 +7,10 @@
 <dl>
 	<?php foreach($data->lista as $asia) { ?>
 	<form action="muokkaus.php" method="GET">
-	<dt><input type="text" name="otsikko" value=<?php echo $asia->getOtsikko(); ?> readonly></dt>
+	<dt><textarea rows="1" cols="50" name="otsikko" readonly><?php echo $asia->getOtsikko(); ?></textarea></dt>
 		<dd><textarea rows="4" cols="50" name="kuvaus" readonly><?php echo $asia->getKuvaus(); ?></textarea></dd>
 		<dd><input type="text" name="ajankohta" value=<?php echo $asia->getAjankohta(); ?> readonly></dd>
-		<button class="btn-primary" type="submit">Muokkaa</button>
+		<button class="btn-primary" type="submit">Muokkaa tai poista</button>
 	</form>
 	<?php } ?>
 </dl>

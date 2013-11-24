@@ -11,7 +11,7 @@ $vanhakuvaus = $data->vanhakuvaus;
 				<form action = "muokkaus.php" method = "GET">
 					<fieldset>
 						<div class="clearfix">
-							<input type = "text" name="uusiotsikko" value=<?php echo $vanhaotsikko; ?>>
+							<textarea rows="1" cols="50" name="uusiotsikko"><?php echo $vanhaotsikko; ?></textarea>
 						</div>
 						<div class = "clearfix">
 							<textarea rows="4" cols="50" name="uusikuvaus"><?php echo $vanhakuvaus; ?></textarea>
@@ -21,6 +21,7 @@ $vanhakuvaus = $data->vanhakuvaus;
 							<input type = "datetime-local">
 						</div>
 						<button class = "btn-primary" type="submit">Muokkaa</button><br>
+						<button class = "btn-secondary" type="submit" formaction="poista.php">Poista</button><br>
 					</fieldset>
 				</form>
 				<a href="etusivu.php">Takaisin etusivulle</a>

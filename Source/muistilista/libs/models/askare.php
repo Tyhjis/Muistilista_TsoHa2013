@@ -55,9 +55,13 @@ class Askare {
 	
 	function poistaAskare ($heading) {
 		$sql1 = "DELETE FROM muistilista WHERE askare_id=(SELECT id FROM askare WHERE otsikko=?)";
+		$sql3 = "DELETE FROM tagilista WHERE askare_id=(SELECT id FROM askare WHERE otsikko=?)";
 		$sql2 = "DELETE FROM askare WHERE otsikko=?";
 		
 		$kysely = getTietokanta()->prepare($sql1);
+		$kysely->execute(array($heading));
+		
+		$kysely = getTietokanta()->prepare($sql2);
 		$kysely->execute(array($heading));
 		
 		$kysely = getTietokanta()->prepare($sql2);
