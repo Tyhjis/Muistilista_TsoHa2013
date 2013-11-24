@@ -1,15 +1,11 @@
 Muistilista_TsoHa2013
 =====================
 
-Muistilistan URL: http://krha.users.cs.helsinki.fi/source/html-demo/kirjaudu.html
+Muistilistan URL: http://krha.users.cs.helsinki.fi/muistilista/kirjautuminen.php
 Testaussivun URL: http://krha.users.cs.helsinki.fi/connectiontest.php
 
-Sivuston kartta:
+Tällä hetkellä muistilista ei vielä tarkista SQL-injektiota. Askareita voi lisätä, muokata ja poistaa.
+Rekisteröinti onnistuu.
+Tagien lisäämistä ei ole vielä toteutettu. 
 
-kirjaudu.html <-----> rekisteroi.html
-	|
-	|
-	|
-etusivu.php <-----> addaskare.html/editaskare.html
-
-Etusivulla on listanäkymä. Tällä hetkellä näyttää vain käyttäjien ID:t.
+Etusivulla on listanäkymä. Listaa kaikki kirjautuneen käyttäjän askareet sekä sisältää linkit askareen muokkaukseen ja poistoon.
