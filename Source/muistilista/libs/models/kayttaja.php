@@ -1,15 +1,15 @@
 <?php
 
-require_once("utils/yhteys.php");
+require_once("yhteys.php");
 
 class Kayttaja {
 	
-	private $ID;
+	private $id;
 	private $etunimi;
 	private $sukunimi;
 	private $tunnus;
-	private $passwd;
-	private $email;
+	private $s_posti;
+	private $salasana;
 	private $yllapitaja;
 	
 	// Hakufunktiot
@@ -29,14 +29,34 @@ class Kayttaja {
 		return $tulokset;
 	}
 	
-	function lisaaKayttaja() {
+	function getKayttaja ($tunnus, $salasana) {
+		$sql = "SELECT * FROM kayttaja WHERE tunnus = ? AND salasana = ?";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($tunnus, $salasana));
+		
+		$tulos = $kysely->fetchObject();
+		if ($tulos == null) {
+			return null;
+		} else {
+			$kayttaja = new Kayttaja();
+			
+			foreach ($tulos as $kentta => $arvo) {
+				$kayttaja->$kentta = $arvo;
+			}
+			return $kayttaja;
+		}
+	}
+	
+	function lisaaKayttaja($enimi, $snimi, $username, $email, $pword) {
 		$sql = "INSERT INTO kayttaja(etunimi, sukunimi, tunnus, s_posti, salasana, yllapitaja) VALUES
-		('".$this->etunimi."','".$this->sukunimi."','".$this->tunnus."','".$this->email."','".$this->passwd."', false)";
+		(?, ?, ?, ?, ?, false)";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($enimi, $snimi, $username, $email, $pword));
 	}
 	
 	// Getterit
 	function getID () {
-		return $this->ID;
+		return $this->id;
 	}
 	
 	function getEtunimi () {
@@ -48,8 +68,7 @@ class Kayttaja {
 	}
 	
 	function getKokonimi () {
-		$kokonimi = $this->etunimi . . $this->sukunimi;
-		return $kokonimi;
+		
 	}
 	
 	function getTunnus () {
