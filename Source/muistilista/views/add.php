@@ -1,6 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-	<body>
+<body>
 		<h1>Askareen lisäys</h1>
 			<div class="form-group">
 				<h2>Lisää askare</h2>
@@ -14,7 +12,23 @@
 						</div>
 						<div class = "clearfix">
 							Päivämäärä ja aika:<br>
-							<input type = "datetime-local" name="ajankohta">
+							<table>
+							<thead>
+							        <tr>
+							                <th>Päivä</th>
+							                <th>Kuukausi</th>
+							                <th>Vuosi</th>
+							                <th>Kellonaika</th>
+							        </tr>
+							</thead>
+							<tbody>
+							        <tr>
+							                <td><input type="text" name="paiva" placeholder="pp"></td>
+							                <td><input type="text" name="kuukausi" placeholder="kk"></td>
+							                <td><input type="text" name="vuosi" placeholder="VVVV"></td>
+							                <td><input type="text" name="tunti" placeholder="hh"></td>
+							                <td><input type="text" name="minuutti" placeholder="mm"></td>
+							</table>
 						</div>
 						<button class = "btn-primary" type="submit">Lisää askare</button><br>
 					</fieldset>
@@ -22,4 +36,3 @@
 				<a href="etusivu.php">Takaisin etusivulle</a>
 			</div>
 	</body>
-</html>

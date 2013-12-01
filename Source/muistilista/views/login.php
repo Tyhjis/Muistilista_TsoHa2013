@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<h1>Muistilista</h1>
-		<p>Tervetuloa muistilistaan! Aloita joko kirjautumalla sisään tai luomalla itsellesi käyttäjätunnus.</p>
-			<div class = "login-form">
-				<h2>Kirjaudu</h2>
+<body>
+	<h1>Muistilista</h1>
+	<p>Tervetuloa muistilistaan! Aloita joko kirjautumalla sisään tai luomalla itsellesi käyttäjätunnus.</p>
+		<div class = "login-form">
+			<h2>Kirjaudu</h2>
 				<form action = "kirjautuminen.php" method = "POST">
 					<fieldset>
 						<div class="clearfix">
@@ -17,9 +15,8 @@
 						<button class = "btn-secondary" type="submit" formaction = "rekisteroi.php">Rekisteröidy</button><br>
 					</fieldset>
 				</form>
-<?php echo $data->virhe; ?>
-			</div>
-	</body>
-	
-	
-</html>
+<?php if( isset($data->virhe) ) {
+			echo $data->virhe;				
+		}?>
+		</div>
+</body>

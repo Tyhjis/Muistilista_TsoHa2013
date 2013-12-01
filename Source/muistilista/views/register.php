@@ -1,5 +1,3 @@
-<!DOCTYPE HTML>
-<html>
 <body>
 			<div class = "login-form">
 				<h2>Rekisteröi</h2>
@@ -21,6 +19,5 @@
 			</div>
 			<?php echo $data->virhe; ?><br>
 			<a href="kirjautuminen.php">Takaisin kirjautumiseen</a><br>
-	</body>
-</html>
+</body>
  

@@ -1,7 +1,5 @@
 <?php
 require_once 'libs/common.php';
-if( tarkistaKirjautuminen() ) {
-	lopetaIstunto();
-}
+lopetaIstunto();
 header('Location: http://krha.users.cs.helsinki.fi/muistilista/kirjautuminen.php');
 ?>

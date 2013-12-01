@@ -54,6 +54,22 @@ class Kayttaja {
 		$kysely->execute(array($enimi, $snimi, $username, $email, $pword));
 	}
 	
+	function haeAskareenKayttajat ($askareID) {
+		$sql = "SELECT kayttaja.id, tunnus FROM kayttaja LEFT JOIN muistilista ON kayttaja.id=muistilista.kayttaja_id WHERE askare_id=?";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($askareID));
+		
+		$tulokset = array();
+		foreach($kysely->fetchAll() as $tulos) {
+			$kayttaja = new Kayttaja();
+			foreach($tulos as $kentta => $arvo) {
+				$kayttaja->$kentta = $arvo;
+			}
+			$tulokset[] = $kayttaja;
+		}
+		return $tulokset;
+	}
+	
 	// Getterit
 	function getID () {
 		return $this->id;
@@ -68,7 +84,8 @@ class Kayttaja {
 	}
 	
 	function getKokonimi () {
-		
+		$kokonimi = $this->etunimi ." ". $this->sukunimi;
+		return $kokonimi;
 	}
 	
 	function getTunnus () {

@@ -44,7 +44,7 @@ function tarkistaVaaditutKentat() {
 	return !empty($_POST["etunimi"]) && !empty($_POST["sukunimi"]) && !empty($_POST["sahkoposti"]) && !empty($_POST["kayttajatunnus"]) && !empty($_POST["salasana1"]) && !empty($_POST["salasana2"]);
 }
 
-// Salasanojes samuuden tarkistaminen
+// Salasanojen samuuden tarkistaminen
 function tarkistaSalasanat() {
 	return $_POST["salasana1"] == $_POST["salasana2"];
 }
