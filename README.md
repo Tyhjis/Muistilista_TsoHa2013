@@ -4,10 +4,9 @@ Muistilista_TsoHa2013
 Muistilistan URL: http://krha.users.cs.helsinki.fi/muistilista/kirjautuminen.php
 Testaussivun URL: http://krha.users.cs.helsinki.fi/connectiontest.php
 
-T‰ll‰ hetkell‰ muistilista ei viel‰ tarkista SQL-injektiota. Askareita voi lis‰t‰, muokata ja poistaa.
+Askareita voi lis‰t‰, muokata poistaa ja jakaa muille k‰ytt‰jille.
 Rekisterˆinti onnistuu.
-Tagien lis‰‰mist‰ ei ole viel‰ toteutettu. 
 
-Etusivulla on listan‰kym‰. Listaa kaikki kirjautuneen k‰ytt‰j‰n askareet sek‰ sis‰lt‰‰ linkit askareen muokkaukseen ja poistoon.
+Etusivulla on listan‰kym‰. Listaa kaikki kirjautuneen k‰ytt‰j‰n askareet sek‰ sis‰lt‰‰ linkit askareen muokkaukseen, poistoon ja jakoon.
 
-Hakemisto Sourse/muistilista sis‰lt‰‰ samat tiedostot kuin users-palvelimella.
+Hakemisto Source/muistilista sis‰lt‰‰ samat tiedostot kuin users-palvelimella.
