@@ -25,5 +25,7 @@ $askare = $data->askare;
 </tr>
 <?php } ?>
 </table>
+<p>Tämän askareen näkevät nämä käyttäjät: <?php foreach( $data->askareenKayttajat as $kayttaja ) { echo $kayttaja->getTunnus()." "; } ?></p>
+
 </body>
-<a href="etusivu.php">En haluakaan jakaa. Eli takaisin etusivulle.</a><br>
+<a href="etusivu.php">Takaisin etusivulle</a><br>

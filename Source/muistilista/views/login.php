@@ -12,8 +12,10 @@
 							<input type = "password" placeholder = "Salasana" name = "password">
 						</div>
 						<button class = "btn-primary" type="submit">Kirjaudu</button><br>
-						<button class = "btn-secondary" type="submit" formaction = "rekisteroi.php">Rekisteröidy</button><br>
 					</fieldset>
+				</form>
+				<form action = "rekisteroi.php" method = "GET">
+				<button class = "btn-secondary" type="submit" name="rekisteroi">Rekisteröidy</button><br>
 				</form>
 <?php if( isset($data->virhe) ) {
 			echo $data->virhe;				

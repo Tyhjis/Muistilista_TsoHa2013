@@ -13,11 +13,11 @@
 							<input type = "password" placeholder = "Salasana" name = "salasana1"><br>
 							<input type = "password" placeholder = "Salasana uudestaan" name = "salasana2">
 						</div>
-						<button class = "btn-primary" type="submit">Rekisteröidy</button><br>
+						<button class = "btn-primary" type="submit" name="nappi" value="reg">Rekisteröidy</button><br>
 					</fieldset>
 				</form>
 			</div>
-			<?php echo $data->virhe; ?><br>
+			<?php if( isset($data->virhe) ) { echo $data->virhe; } ?><br>
 			<a href="kirjautuminen.php">Takaisin kirjautumiseen</a><br>
 </body>
  

@@ -4,7 +4,8 @@ require_once("kayttaja.php");
 require_once("tagi.php");
 
 class Askare {
-	private $id;	
+	private $id;
+	private $prioriteetti;	
 	private $otsikko;
 	private $kuvaus;
 	private $ajankohta;
@@ -29,7 +30,7 @@ class Askare {
 	}
 	
 	function haeKayttajanAskareet ($kayttajaid) {
-		$sql = "SELECT askare.id, otsikko, kuvaus, ajankohta FROM askare LEFT JOIN muistilista ON askare.id=muistilista.askare_id WHERE kayttaja_id=?";
+		$sql = "SELECT prioriteetti, askare.id, otsikko, kuvaus, ajankohta FROM askare LEFT JOIN muistilista ON askare.id=muistilista.askare_id WHERE kayttaja_id=?";
 		$kysely = getTietokanta()->prepare($sql);
 		$kysely->execute(array($kayttajaid));
 		
@@ -94,17 +95,17 @@ class Askare {
 
 	// Lisäysfunktiot
 	
-	function lisaaAskare ($heading, $kuvailu, $pvm, $kayttajaID) {
-		$sql1 = "INSERT INTO askare(otsikko, kuvaus, ajankohta) VALUES(?, ?, ?)";
-		$sql2 = "INSERT INTO muistilista(kayttaja_id, askare_id) VALUES(?, (SELECT id FROM askare WHERE otsikko=?))";
+	function lisaaAskare ($heading, $kuvailu, $pvm, $kayttajaID, $prioriteetti) {
+		$sql1 = "INSERT INTO askare(prioriteetti, otsikko, kuvaus, ajankohta) VALUES(?, ?, ?, ?)";
+		$sql2 = "INSERT INTO muistilista(kayttaja_id, askare_id) VALUES(?, (SELECT id FROM askare WHERE otsikko=? AND ajankohta=?))";
 		
 		// Ensin lisätään askare
 		$kysely = getTietokanta()->prepare($sql1);
-		$kysely->execute(array($heading, $kuvailu, $pvm));
+		$kysely->execute(array($prioriteetti, $heading, $kuvailu, $pvm));
 		
 		// Liitetään käyttäjä ja askare yhteen.
 		$kysely = getTietokanta()->prepare($sql2);
-		$kysely->execute(array($kayttajaID, $heading));
+		$kysely->execute(array($kayttajaID, $heading, $pvm));
 	}
 	
 	function jaaAskare ($kayttajaID, $askareID) {
@@ -116,17 +117,16 @@ class Askare {
 	
 	function lisaaTagiAskareeseen($tagiID, $askareID) {
 		$sql = "INSERT INTO tagilista(tagi_id, askare_id) VALUES(?,?)";
-		
 		$kysely = getTietokanta()->prepare($sql);
 		$kysely->execute(array($tagiID, $askareID));
 	}
 	
 	// Muokkaus
 	
-	function muokkaaAskaretta ($askareID, $heading, $kuvailu, $pvm) {
-		$sql = "UPDATE askare SET otsikko=?, kuvaus=?, ajankohta=? WHERE id=?";
+	function muokkaaAskaretta ($askareID, $heading, $kuvailu, $pvm, $prioriteetti) {
+		$sql = "UPDATE askare SET prioriteetti=?, otsikko=?, kuvaus=?, ajankohta=? WHERE id=?";
 		$kysely = getTietokanta()->prepare($sql);
-		$kysely->execute(array($heading, $kuvailu, $pvm, $askareID));	
+		$kysely->execute(array($prioriteetti, $heading, $kuvailu, $pvm, $askareID));	
 	}
 	
 	// POISTO
@@ -141,12 +141,18 @@ class Askare {
 		
 		$kayttajia = Askare::tarkistaOnkoAskareellaKayttajia( $id );
 		if( !$kayttajia ) {
-			$kysely = getTietokanta()->prepare($sql2);
-			$kysely->execute(array($id));
-			
 			$kysely = getTietokanta()->prepare($sql3);
 			$kysely->execute(array($id));
+			
+			$kysely = getTietokanta()->prepare($sql2);
+			$kysely->execute(array($id));
 		}
+	}
+	
+	function poistaTagiAskareesta ($askareID, $tagiID) {
+		$sql = "DELETE FROM tagilista WHERE askare_id=? AND tagi_id=?";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($askareID, $tagiID));
 	}
 	
 	function tarkistaOnkoAskareellaKayttajia( $askareID ) {
@@ -160,6 +166,32 @@ class Askare {
 		}
 		
 		return count($tulokset) != 0;
+	}
+	
+	function luoUusiTagi( $nimi ) {
+		$sql1 = "INSERT INTO tagi(nimi) VALUES(?)";
+		$sql2 = "SELECT * FROM tagi WHERE nimi=?";
+		$kysely = getTietokanta()->prepare($sql2);
+		$kysely->execute(array($nimi));
+		$rivit = $kysely->rowCount();
+		
+		if( $rivit == 0 ) {
+			$kysely = getTietokanta()->prepare($sql1);
+			$kysely->execute(array($nimi));
+			return true;
+		}
+		return false;
+	}
+	
+	function poistaTagiTietokannasta( $id ) {
+		$sql1 = "DELETE FROM tagilista WHERE tagi_id=?";
+		$sql2 = "DELETE FROM tagi where id=?";
+		
+		$kysely = getTietokanta()->prepare($sql1);
+		$kysely->execute(array($id));
+		
+		$kysely = getTietokanta()->prepare($sql2);
+		$kysely->execute(array($id));
 	}
 	
 	// Getterit
@@ -179,13 +211,8 @@ class Askare {
 		return $this->ajankohta;
 	}
 	
-	// Setterit
-	function setOtsikko ($teksti) {
-		$this->otsikko = $teksti;
-	}
-	
-	function setKuvaus ($teksti) {
-		$this->kuvaus = $teksti;
+	function getPrioriteetti () {
+		return $this->prioriteetti;
 	}	
 }
 ?>

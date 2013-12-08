@@ -8,7 +8,7 @@ if( !tarkistaKirjautuminen() ) {
 }
 
 if( !empty($_GET["id"]) ) {
-	Askare::poistaAskare($_GET['id'], $_SESSION['id']);
+	Askare::poistaAskare($_GET["id"], $_SESSION['id']);
 	header("Location: etusivu.php");
 	exit();
 	
@@ -16,4 +16,3 @@ if( !empty($_GET["id"]) ) {
 	header("Location: etusivu.php");
 	exit();
 }
-?>

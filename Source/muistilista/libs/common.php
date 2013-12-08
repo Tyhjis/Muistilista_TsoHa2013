@@ -18,6 +18,7 @@ function alustaIstunto($kayttajatunnus, $id, $yllapitaja) {
 function lopetaIstunto() {
 	unset($_SESSION['kayttaja']);
 	unset($_SESSION['id']);
+	unset($_SESSION['yllapitaja']);
 }
 
 function tarkistaKirjautuminen() {
@@ -61,4 +62,3 @@ function tarkistaVuosi( $vuosi ) {
 function onkoKarkausvuosi( $vuosi ) {
         return ($vuosi % 4 == 0 && $vuosi % 100 != 0) || $vuosi %400 == 0;
 }
-?>

@@ -29,10 +29,19 @@
 							                <td><input type="text" name="tunti" placeholder="hh"></td>
 							                <td><input type="text" name="minuutti" placeholder="mm"></td>
 							</table>
-						</div>
-						<button class = "btn-primary" type="submit">Lisää askare</button><br>
+						</div><br>
+						<b>Prioriteetti:</b>
+						<select name="prioriteetti">
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
+						<button class = "btn-primary" type="submit" name="nappi" value="painettu">Lisää askare</button><br>
 					</fieldset>
 				</form>
+				<?php if( isset($data) ) { echo $data->virhe; }?><br>
 				<a href="etusivu.php">Takaisin etusivulle</a>
 			</div>
 	</body>

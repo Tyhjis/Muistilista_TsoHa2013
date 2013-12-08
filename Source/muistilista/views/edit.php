@@ -44,6 +44,14 @@ $minuutti = $data->minuutti;
 											echo $tagi->nimi.", ";
 									 } ?></p>
 						<br>
+						<b>Prioriteetti:</b>
+						<select name="prioriteetti">
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
 						<button class = "btn-primary" type="submit" name="uid" value=<?php echo $id; ?> form="paivitysform">Muokkaa</button><br>
 					</fieldset>
 				</form>
@@ -54,7 +62,16 @@ $minuutti = $data->minuutti;
 								<?php } ?>
 							</select>
 						</form>
-						<button class = "btn-default" type="submit" name="tagiAsk" value=<?php echo $id; ?> form="tagiform">Lisää tagi askareeseen</button><br>
+						<button class = "btn btn-default" type="submit" name="tagiAsk" value=<?php echo $id; ?> form="tagiform">Lisää tagi askareeseen</button><br>
+						
+				<form id="tagidelform" method="get">
+					<select name="tagipoisto" form="tagidelform">
+						<?php foreach($data->askareentagit as $tagi) { ?>
+						<option value=<?php echo $tagi->id;?> ><?php echo $tagi->nimi; ?></option>
+						<?php } ?>					
+					</select>
+				</form>
+				<button class="btn btn-default" type="submit" name="tagiDel" value=<?php echo $id; ?> form="tagidelform">Poista tagi askareesta</button><br>
 				<a href="etusivu.php">Takaisin etusivulle</a><br>
 				<?php if( isset($data->virhe) ) {
 					echo $data->virhe;

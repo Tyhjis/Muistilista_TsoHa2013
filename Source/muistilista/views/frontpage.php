@@ -6,6 +6,7 @@ $tagit;?>
 <table id="myTable" class="table table-striped table-bordered tablesorter">
 <thead>
 <tr>
+	<th>Prior.</th>
 	<th>Otsikko</th>
 	<th>Kuvaus</th>
 	<th>Ajankohta</th>
@@ -19,6 +20,7 @@ $tagit;?>
 <?php foreach($data->lista as $asia) { ?>
 	<tr>
 		<?php $id = $asia->getID(); ?>
+		<td><?php echo $asia->getPrioriteetti(); ?></td>
 		<td><?php echo $asia->getOtsikko(); ?></td>
 		<td><?php echo $asia->getKuvaus(); ?></td>
 		<td><?php echo $asia->getAjankohta(); ?></td>
@@ -44,7 +46,11 @@ $tagit;?>
 		<?php } ?>
 	</select>
 	<button type="submit" class="btn btn-default" form="tagiform">Näytä</button>
-
+<form action="etusivu.php" method="get">
+	<input type="text" name="uusitagi" placeholder="Luo uusi tagi">
+	<button class = "btn-default" type="submit">Luo</button>
+	<?php if( isset($data->virhe)) { echo $data->virhe; } ?>
+</form>
 <br><br>
 <?php if( $_SESSION['yllapitaja'] == true ) { ?>
 		<a href="yllapitaja.php">Ylläpidon sivu</a><br>

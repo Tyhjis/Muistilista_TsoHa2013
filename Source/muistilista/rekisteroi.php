@@ -2,32 +2,37 @@
 require_once 'libs/common.php';
 require_once 'libs/models/kayttaja.php';
 
-if( empty($_POST["etunimi"]) ) {
-	naytaNakyma('register.php');
-	exit();
-}
-if( empty($_POST["sukunimi"]) ) {
-	naytaNakyma('register.php');
-	exit();
-}
-if( empty($_POST["sahkoposti"]) ) {
-	naytaNakyma('register.php');
-	exit();
-}
-if( empty($_POST["kayttajatunnus"]) ) {
-	naytaNakyma('register.php');
-	exit();
-}
-if( empty($_POST["salasana1"]) ) {
-	naytaNakyma('register.php');
-	exit();
-}
-if( empty($_POST["salasana2"]) ) {
-	naytaNakyma('register.php');
+if( isset($_GET["rekisteroi"]) ) {
+	naytaNakyma('register.php', array('virhe' => " "));
 	exit();
 }
 
-if( !tarkistaVaaditutKentat() ) {
+if( empty($_POST["etunimi"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Etunimesi puuttuu."));
+	exit();
+}
+if( empty($_POST["sukunimi"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Sukunimesi puuttuu."));
+	exit();
+}
+if( empty($_POST["sahkoposti"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Sähköpostiosoitteesi puuttuu."));
+	exit();
+}
+if( empty($_POST["kayttajatunnus"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Käyttäjätunnuksesi puuttuu."));
+	exit();
+}
+if( empty($_POST["salasana1"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Salasanasi puuttuu."));
+	exit();
+}
+if( empty($_POST["salasana2"]) && isset($_POST["nappi"]) ) {
+	naytaNakyma('register.php', array('virhe' => "Muista täyttää molemmat salasanakentät."));
+	exit();
+}
+
+if( !tarkistaVaaditutKentat() && isset($_POST["nappi"]) ) {
 	naytaNakyma('register.php', array('virhe' => "Täytä vaaditut kentät"));
 } else {
 	if( !tarkistaSalasanat() ) {

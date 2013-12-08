@@ -70,6 +70,18 @@ class Kayttaja {
 		return $tulokset;
 	}
 	
+	function korotaKayttajaAdminiksi( $kayttajaID ) {
+		$sql = "UPDATE kayttaja SET yllapitaja=true WHERE id=?";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($kayttajaID));
+	}
+	
+	function poistaKayttaja ( $kayttajaID ) {
+		$sql = "DELETE FROM kayttaja WHERE id=?";
+		$kysely = getTietokanta()->prepare($sql);
+		$kysely->execute(array($kayttajaID));		
+	}
+	
 	// Getterit
 	function getID () {
 		return $this->id;

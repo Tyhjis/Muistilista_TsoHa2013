@@ -3,6 +3,11 @@ require_once 'libs/common.php';
 require_once 'libs/models/kayttaja.php';
 require_once 'libs/models/askare.php';
 
+if( !tarkistaKirjautuminen() ) {
+	header("Location: kirjautuminen.php");
+	exit();
+}
+
 if( !empty($_GET['kayttajaID']) && !empty($_GET['askareID']) ) {
 	$kayttajaID = $_GET['kayttajaID'];
 	$askareID = $_GET['askareID'];
@@ -11,7 +16,7 @@ if( !empty($_GET['kayttajaID']) && !empty($_GET['askareID']) ) {
 	$askareenKayttajat = Kayttaja::haeAskareenKayttajat($askareID);
 	$askareolio = Askare::haeAskare($askareID);
 	$kayttajat = karsiKayttajia($kayttajat, $askareenKayttajat);
-	naytaNakyma( 'share.php', array('kayttajat' => $kayttajat, 'askare' => $askareolio) );
+	naytaNakyma( 'share.php', array('kayttajat' => $kayttajat, 'askare' => $askareolio, 'askareenKayttajat' => $askareenKayttajat) );
 	exit();
 }
 
@@ -26,7 +31,7 @@ $askareolio = Askare::haeAskare($_GET["id"]);
 
 $kayttajat = karsiKayttajia( $kayttajat, $askareenKayttajat );
 
-naytaNakyma( 'share.php', array('kayttajat' => $kayttajat, 'askare' => $askareolio) );
+naytaNakyma( 'share.php', array('kayttajat' => $kayttajat, 'askare' => $askareolio, 'askareenKayttajat' => $askareenKayttajat) );
 
 function karsiKayttajia( $kayttajat, $askareenKayttajat ) {
 	foreach( $kayttajat as $kayttaja => $id) {
